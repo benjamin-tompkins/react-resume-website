@@ -8,7 +8,7 @@ function ExperienceCard(props) {
 	const {description, endDate, link, logo, name, startDate} = props;
 	const hasDates = startDate && endDate;
 	return (
-		<Card raised sx={{borderRadius: '20px'}}>
+		<Card raised sx={{borderRadius: '20px', display: 'flex'}}>
 			<Grid
 				container
 				direction='row'
@@ -39,7 +39,7 @@ function ExperienceCard(props) {
 								{	hasDates ?
 									<Grid item xs={2}>
 										<Tooltip title={moment.duration(moment(endDate).diff(moment(startDate))).humanize()} >
-											<Typography align='left' variant='body2' sx={{display: 'inline'}}>
+											<Typography align='left' variant='body1' sx={{display: 'inline'}}>
 												{startDate + ' - ' + endDate}
 											</Typography>
 										</Tooltip>
@@ -49,7 +49,7 @@ function ExperienceCard(props) {
 							</Grid>
 						}
 						secondary={
-							<Typography align='left' paddingTop={1} variant='body2'>
+							<Typography align='left' variant='body2'>
 								{description}
 							</Typography>
 						}

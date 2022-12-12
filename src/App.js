@@ -18,22 +18,11 @@ function App() {
     <ThemeProvider theme={themeRef}>
       <CssBaseline />
       <Paper >
-        <Container fixed>
-            <Grid
-              container
-              direction='column'
-              justifyContent='center'
-              alignItems='center'
-              padding={1}
-              marginLeft={4}
-            >
-              <Grid item xs={1} padding={1}>
-                <Header />
-                <EducationSection />
-                <ExperienceSection />
-                <ProjectsSection />
-              </Grid>
-            </Grid>
+        <Container fixed maxWidth='md' sx={{padding: '20px'}}>
+            <Header />
+            <EducationSection />
+            <ExperienceSection />
+            <ProjectsSection />
         </Container>
       </Paper>
     </ThemeProvider>

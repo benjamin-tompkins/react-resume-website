@@ -32,7 +32,7 @@ export const educationData = {
 
 export const projectsData = [
 	{
-		description: 'This page right here! While between jobs I decided to elevate my resume and showcase some of my frontend development skills. I created this page using tools that I have used in the industry. Built using React, MaterialUI, and Vercel.',
+		description: 'This page right here! While between jobs I decided to elevate my resume and showcase some of my frontend development skills. I built this page with industry tools such as React, MaterialUI, and Vercel.',
 		logo: reactLogo,
 		link: 'https://github.com/benjamin-tompkins/react-resume-website',
 		name: 'React Resume Website'
