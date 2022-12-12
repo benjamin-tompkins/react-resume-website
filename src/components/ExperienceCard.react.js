@@ -1,14 +1,17 @@
 import { Avatar, Button, Card, Grid, Link, ListItemText, Tooltip, Typography } from '@mui/material';
 import moment from 'moment';
+import { useContext } from 'react';
+import { AppContext } from '../AppContext';
 
 const IMAGE_HEIGHT = 50
 const IMAGE_WIDTH = 50
 
 function ExperienceCard(props) {
 	const {description, endDate, link, logo, name, startDate} = props;
+	const {borderRadius, mobile} = useContext(AppContext);
 	const hasDates = startDate && endDate;
 	return (
-		<Card raised sx={{borderRadius: '20px', display: 'flex'}}>
+		<Card raised sx={{borderRadius: borderRadius, display: 'flex'}}>
 			<Grid
 				container
 				direction='row'
@@ -16,7 +19,7 @@ function ExperienceCard(props) {
 				alignItems='center'
 				padding={1}
 			>
-				{logo ?
+				{!mobile && logo ?
 					<Grid item xs={1} padding={1}>
 						<Avatar alt={name} src={logo} sx={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }}/>
 					</Grid>
@@ -31,15 +34,15 @@ function ExperienceCard(props) {
 								justifyContent='center'
 								alignItems='center'
 							>
-								<Grid item xs={hasDates ? 10 : 12}>
+								<Grid item xs={!mobile && hasDates ? 10 : 12}>
 									<Typography align='left' variant='body1' display='inline'>
 											{name}
 									</Typography>
 								</Grid> 
-								{	hasDates ?
+								{	!mobile && hasDates ?
 									<Grid item xs={2}>
 										<Tooltip title={moment.duration(moment(endDate).diff(moment(startDate))).humanize()} >
-											<Typography align='left' variant='body1' sx={{display: 'inline'}}>
+											<Typography align='left' variant='body2' sx={{display: 'inline'}}>
 												{startDate + ' - ' + endDate}
 											</Typography>
 										</Tooltip>

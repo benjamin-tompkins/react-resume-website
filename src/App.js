@@ -1,13 +1,14 @@
-import { Container, createTheme, CssBaseline, Grid, Paper, ThemeProvider} from '@mui/material';
+import { Container, createTheme, CssBaseline, Paper, ThemeProvider, useMediaQuery} from '@mui/material';
 import './App.css';
 import React from 'react';
 import Header from './components/Header.react';
 import ExperienceSection from './components/ExperienceSection.react';
 import EducationSection from './components/EducationSection.react';
 import ProjectsSection from './components/ProjectsSection.react';
+import { AppContext } from './AppContext';
 
 const theme = {
-	palette: {
+  palette: {
     mode: 'dark',
   },
 }
@@ -17,14 +18,16 @@ function App() {
   return (
     <ThemeProvider theme={themeRef}>
       <CssBaseline />
-      <Paper >
-        <Container fixed maxWidth='md' sx={{padding: '20px'}}>
-            <Header />
-            <EducationSection />
-            <ExperienceSection />
-            <ProjectsSection />
-        </Container>
-      </Paper>
+      <AppContext.Provider value={{borderRadius: '20px', mobile: useMediaQuery(themeRef.breakpoints.down("md"))}}>
+        <Paper >
+          <Container fixed maxWidth='md' sx={{padding: '20px'}}>
+              <Header />
+              <EducationSection />
+              <ExperienceSection />
+              <ProjectsSection />
+          </Container>
+        </Paper>
+      </AppContext.Provider>
     </ThemeProvider>
   );
 }

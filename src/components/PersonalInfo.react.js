@@ -1,12 +1,16 @@
 import linkedInLogo from '../assets/linkedIn.jpeg'
 import { Avatar, Card, Grid, Link, Tooltip, Typography } from '@mui/material';
+import { useContext } from 'react';
+import { AppContext } from '../AppContext';
 
 const IMAGE_HEIGHT = 50
 const IMAGE_WIDTH = 50
 
 function PersonalInfo() {
+	const {borderRadius, mobile} = useContext(AppContext);
+
 	return (
-		<Card raised sx={{borderRadius: '20px'}}>
+		<Card raised sx={{borderRadius: borderRadius}}>
 			<Grid
 				container
 				direction='column'
@@ -21,20 +25,23 @@ function PersonalInfo() {
 						alignItems='center'
 						padding={1}
 					>
-						<Grid item xs={11}>
+						<Grid item xs={mobile ? 12 : 11}>
 							<Typography variant='h3'>
 								Ben Tompkins
 							</Typography>
 						</Grid>
-						<Grid item xs={1}>
-							{
-								<Link display='inline' href='https://www.linkedin.com/in/benjamin-tompkins-423862180/' color='inherit' target='_blank'>
-									<Tooltip title='Check out my LinkedIn!'>
-										<Avatar alt='LinkedIn Profile' src={linkedInLogo} sx={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }}/>
-									</Tooltip>
-								</Link>
-							}
-						</Grid>
+						{ !mobile ? 
+							<Grid item xs={1}>
+								{
+									<Link display='inline' href='https://www.linkedin.com/in/benjamin-tompkins-423862180/' color='inherit' target='_blank'>
+										<Tooltip title='Check out my LinkedIn!'>
+											<Avatar alt='LinkedIn Profile' src={linkedInLogo} sx={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }}/>
+										</Tooltip>
+									</Link>
+								}
+							</Grid>
+							: null
+						}
 					</Grid>
 				</Grid>
 				<Grid item xs={12}>
