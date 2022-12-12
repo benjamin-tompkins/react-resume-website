@@ -1,3 +1,5 @@
+import bittorrentLogo from './bittorrentLogo.jpeg'
+import crosswordLogo from './crosswordLogo.jpeg'
 import interclypseLogo from './interclypseLogo.jpeg'
 import metaLogo from './metaLogo.jpeg'
 import reactLogo from './reactLogo.jpeg'
@@ -21,7 +23,7 @@ export const experienceData = [
 ]
 
 export const educationData = {
-	description: `Bachelor of Science, Major: Computer Science | Minor: Linguistics \n GPA: 3.93`,
+	description: 'Bachelor of Science, Major: Computer Science | Minor: Linguistics',
 	endDate: '2022',
 	logo: umdLogo,
 	name: 'University of Maryland',
@@ -30,16 +32,19 @@ export const educationData = {
 
 export const projectsData = [
 	{
-		description: 'This page right here! While between jobs I decided to elevate my resume and showcase some of my frontend development skills. I created this page using tools that I have used in the industry. Built using React, MaterialUI, and. The source code can be found here: ',
+		description: 'This page right here! While between jobs I decided to elevate my resume and showcase some of my frontend development skills. I created this page using tools that I have used in the industry. Built using React, MaterialUI, and Vercel.',
 		logo: reactLogo,
+		link: 'https://github.com/benjamin-tompkins/react-resume-website',
 		name: 'React Resume Website'
 	},
 	{
 		description: 'Collaborated with 3 other members to create BitTorrent client that followed the protocol specifications. The specifications can be found here: https://www.bittorrent.org/beps/bep_0003.html',
+		logo: bittorrentLogo,
 		name: 'BitTorrent'
 	},
 	{
 		description: 'A machine learned guesser and solver that completed NYT crossword puzzles using different Natural Language Processing tools such as TF-IDF, ELMo, and other transformer-based models',
+		logo: crosswordLogo,
 		name: 'NYT Crossword Puzzle Solver'
 	},
 ];

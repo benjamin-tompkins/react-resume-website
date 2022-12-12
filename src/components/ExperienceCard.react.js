@@ -1,45 +1,45 @@
-import { Avatar, Card, Grid, ListItemText, Tooltip, Typography } from "@mui/material";
-import moment from "moment";
+import { Avatar, Button, Card, Grid, Link, ListItemText, Tooltip, Typography } from '@mui/material';
+import moment from 'moment';
 
 const IMAGE_HEIGHT = 50
 const IMAGE_WIDTH = 50
 
 function ExperienceCard(props) {
-	const {description, endDate, logo, name, startDate} = props;
+	const {description, endDate, link, logo, name, startDate} = props;
 	const hasDates = startDate && endDate;
 	return (
-		<Card raised={true} variant="secondary">
+		<Card raised sx={{borderRadius: '20px'}}>
 			<Grid
 				container
-				direction="row"
-				justifyContent="center"
-				alignItems="center"
+				direction='row'
+				justifyContent='center'
+				alignItems='center'
 				padding={1}
 			>
 				{logo ?
 					<Grid item xs={1} padding={1}>
-						<Avatar alt="Meta" src={logo} sx={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }}/>
+						<Avatar alt={name} src={logo} sx={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }}/>
 					</Grid>
 					: null
 				}
-				<Grid item xs={11}>
+				<Grid item xs={logo ? 11 : 12}>
 					<ListItemText
 						primary={
 							<Grid
 								container
-								direction="row"
-								justifyContent="center"
-								alignItems="center"
+								direction='row'
+								justifyContent='center'
+								alignItems='center'
 							>
 								<Grid item xs={hasDates ? 10 : 12}>
-									<Typography align="left" variant='body1'>
-										{name}
+									<Typography align='left' variant='body1' display='inline'>
+											{name}
 									</Typography>
 								</Grid> 
 								{	hasDates ?
 									<Grid item xs={2}>
 										<Tooltip title={moment.duration(moment(endDate).diff(moment(startDate))).humanize()} >
-											<Typography variant='body2' sx={{display: 'inline', justifyContent: 'flex-end'}}>
+											<Typography align='left' variant='body2' sx={{display: 'inline'}}>
 												{startDate + ' - ' + endDate}
 											</Typography>
 										</Tooltip>
@@ -49,12 +49,20 @@ function ExperienceCard(props) {
 							</Grid>
 						}
 						secondary={
-							<Typography align="left" variant='body2'>
+							<Typography align='left' paddingTop={1} variant='body2'>
 								{description}
 							</Typography>
 						}
 					/>
 				</Grid>
+				{link ? 
+					<Grid item padding={1}>
+						<Link href={link} target='_blank' underline='none'>
+							<Button  variant="outlined">Open in GitHub</Button>
+						</Link>
+					</Grid>
+					: null
+				}
 			</Grid>
 		</Card>
 	)
