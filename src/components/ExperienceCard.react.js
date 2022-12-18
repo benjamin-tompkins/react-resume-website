@@ -21,7 +21,7 @@ function ExperienceCard(props) {
 			>
 				{!mobile && logo ?
 					<Grid item xs={1} padding={1}>
-						<Avatar alt={name} src={logo} sx={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }}/>
+						<Avatar alt={name} src={logo} sx={{ height: IMAGE_HEIGHT, position: 'inherit', width: IMAGE_WIDTH, color: 'white' }}/>
 					</Grid>
 					: null
 				}

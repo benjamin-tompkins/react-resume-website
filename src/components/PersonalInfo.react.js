@@ -1,13 +1,9 @@
-import linkedInLogo from '../assets/linkedIn.jpeg'
-import { Avatar, Card, Grid, Link, Tooltip, Typography } from '@mui/material';
+import { Card, Grid, Typography } from '@mui/material';
 import { useContext } from 'react';
 import { AppContext } from '../AppContext';
 
-const IMAGE_HEIGHT = 50
-const IMAGE_WIDTH = 50
-
 function PersonalInfo() {
-	const {borderRadius, mobile} = useContext(AppContext);
+	const {borderRadius} = useContext(AppContext);
 
 	return (
 		<Card raised sx={{borderRadius: borderRadius}}>
@@ -25,23 +21,11 @@ function PersonalInfo() {
 						alignItems='center'
 						padding={1}
 					>
-						<Grid item xs={mobile ? 12 : 11}>
+						<Grid item xs={12}>
 							<Typography variant='h3'>
 								Ben Tompkins
 							</Typography>
 						</Grid>
-						{ !mobile ? 
-							<Grid item xs={1}>
-								{
-									<Link display='inline' href='https://www.linkedin.com/in/benjamin-tompkins-423862180/' color='inherit' target='_blank'>
-										<Tooltip title='Check out my LinkedIn!'>
-											<Avatar alt='LinkedIn Profile' src={linkedInLogo} sx={{ width: IMAGE_WIDTH, height: IMAGE_HEIGHT }}/>
-										</Tooltip>
-									</Link>
-								}
-							</Grid>
-							: null
-						}
 					</Grid>
 				</Grid>
 				<Grid item xs={12}>
@@ -52,7 +36,7 @@ function PersonalInfo() {
 					</Grid>
 					<Grid item paddingBottom={1} xs={12}>
 						<Typography align='center' variant='h5'>
-							(301) 452-844
+							(301) 452-8442
 						</Typography>
 					</Grid>
 					<Grid item paddingBottom={1} xs={12}>
