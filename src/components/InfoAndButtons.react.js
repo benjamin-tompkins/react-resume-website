@@ -1,9 +1,15 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@mui/icons-material";
 import { Button, ButtonGroup, Grid } from "@mui/material";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
+import PropTypes from 'prop-types';
+import MyStoryInfo from "./MyStoryInfo.react";
 import { AppContext } from "../AppContext";
 import { myStoryData } from '../assets/data.js';
-import MyStoryInfo from "./MyStoryInfo.react";
+
+InfoAndButtons.propTypes = {
+  selected: PropTypes.object.isRequired,
+	setSelected: PropTypes.func.isRequired
+}
 
 function InfoAndButtons(props) {
 	const {appBarHeight} = useContext(AppContext);
@@ -34,39 +40,35 @@ function InfoAndButtons(props) {
 	return (
 		<Grid
 			container
+			alignItems='right'
 			direction='column'
 			justifyContent='center'
-			alignItems='right'
 		>
 			<Grid item
 				marginTop={appBarHeight}
 				sx={{
-					width: '100%',
-					height: `calc(75vh - 30px)`,
-					backgroundColor: 'background.paper',
 					'&:hover': {
 						backgroundColor: 'background.paper',
 					},
-					opacity: [0.9, 0.8, 0.7],
+					backgroundColor: 'background.paper',
 					display: 'flex',
-					padding: '20px'
+					height: `calc(75vh - 30px)`,
+					opacity: [0.9, 0.8, 0.7],
+					padding: '20px',
+					width: '100%',
 				}}
 			>
-				<MyStoryInfo {...selected}/>
+				<MyStoryInfo {...selected} />
 			</Grid>
 			<Grid item>
-				<ButtonGroup fullWidth variant="text" sx={{height: `calc(25vh - 30px)`}}>
+				<ButtonGroup fullWidth sx={{height: `calc(25vh - 30px)`}} variant="text" >
 					<Button
 						onClick={handleBack}
-						onMouseOver={() => setHoveringLeft(true)}
 						onMouseOut={() => setHoveringLeft(false)}
+						onMouseOver={() => setHoveringLeft(true)}
 					>
 						<KeyboardArrowLeft
 							sx={{
-								animationName: `${hoveringLeft ? 'expand' : ''}`,
-								animationDuration: '3s',
-								animationIterationCount: 'infinite',
-								animationFillMode: 'forwards',
 								"@keyframes expand": {
 									"0%": {
 										transform: 'scale(1)',
@@ -78,23 +80,24 @@ function InfoAndButtons(props) {
 										transform: ' scale(1)',
 									},
 								},
+								animationDuration: '3s',
+								animationFillMode: 'forwards',
+								animationIterationCount: 'infinite',
+								animationName: `${hoveringLeft ? 'expand' : ''}`,
+								color:'primary.main',
+								
 								height: '50px',
 								width: '50px',
-								color:'primary.main',
 							}}
 						/>
 					</Button>
 					<Button
 						onClick={handleNext}
-						onMouseOver={() => setHoveringRight(true)}
 						onMouseOut={() => setHoveringRight(false)}
+						onMouseOver={() => setHoveringRight(true)}
 					>
 						<KeyboardArrowRight
 							sx={{
-								animationName: `${hoveringRight ? 'expand' : ''}`,
-								animationDuration: '3s',
-								animationIterationCount: 'infinite',
-								animationFillMode: 'forwards',
 								"@keyframes expand": {
 									"0%": {
 										transform: 'scale(1)',
@@ -106,9 +109,13 @@ function InfoAndButtons(props) {
 										transform: ' scale(1)',
 									},
 								},
+								animationDuration: '3s',
+								animationFillMode: 'forwards',
+								animationIterationCount: 'infinite',
+								animationName: `${hoveringRight ? 'expand' : ''}`,
+								color:'primary.main',
 								height: '50px',
 								width: '50px',
-								color:'primary.main',
 							}}
 						/>
 					</Button>

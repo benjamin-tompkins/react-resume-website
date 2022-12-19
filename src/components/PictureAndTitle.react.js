@@ -1,6 +1,11 @@
 import { South } from "@mui/icons-material";
 import { Avatar, Box, ButtonGroup, Card, Fade, Grid, Slide, Tooltip, Typography } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
+import PropTypes from 'prop-types';
+
+PictureAndTitle.propTypes = {
+  selected: PropTypes.object.isRequired,
+}
 
 function PictureAndTitle(props) {
 	const {selected} = props;
@@ -10,34 +15,34 @@ function PictureAndTitle(props) {
 	return (
 		<Grid
 			container
+			alignItems='right'
 			direction='column'
 			justifyContent='center'
-			alignItems='right'
 		>
 			<Grid item sx={{height: `calc(75vh - 30px)`,}}>
 				<Box>
-					<img src={selected.photo} alt={selected.name} style={{height: `calc(75vh - 30px)`, width: '100%'}}/>
+					<img alt={selected.name} src={selected.photo} style={{height: `calc(75vh - 30px)`, width: '100%'}} />
 				</Box>
 			</Grid>
-			<Grid item
+			<Grid itemType=""
 				onClick={() => setClicked(!clicked)}
 				sx={{
-					width: '100%',
 					backgroundColor: 'background.paper',
 					display: 'flex',
 					overflow: 'hidden',
+					width: '100%',
 				}}
 			>
 				<Card
-					onMouseOver={() => setHovering(true)}
 					onMouseOut={() => setHovering(false)}
-					sx={{ width: '100%', height: `calc(25vh - 30px)`, display: 'flex'}}
+					onMouseOver={() => setHovering(true)}
+					sx={{ display: 'flex', height: `calc(25vh - 30px)`, width: '100%'}}
 				>
 					<Grid
 						container
+						alignItems='center'
 						direction='row'
 						justifyContent='center'
-						alignItems='center'
 						padding={4}
 					> 
 						<Grid item xs={10}>
@@ -50,14 +55,13 @@ function PictureAndTitle(props) {
 									</Fade>
 									<ButtonGroup size='large'>
 										{selected?.icons?.map(icon => (
-											<Slide direction="up" in={clicked}>
+											<Slide direction="up" in={clicked} key={icon.tooltip}>
 												<Tooltip title={icon.tooltip}>
 													<Avatar
 														alt={icon.tooltip}
 														display='inline'
-														key={icon.tooltip}
 														src={icon.image}
-														sx={{ width: '50px', height: '50px', margin:'10px'}}
+														sx={{ height: '50px', margin:'10px', width: '50px'}}
 													/>
 												</Tooltip>
 											</Slide>
@@ -75,10 +79,6 @@ function PictureAndTitle(props) {
 						<Grid item xs={2}>
 							<South
 								sx={{
-									animationName: `${hovering ? clicked ? 'moveUp' : 'moveDown' : ''}`,
-									animationDuration: '2.5s',
-									animationIterationCount: '1',
-									animationFillMode: 'forwards',
 									"@keyframes moveDown": {
 										"0%": {
 											transform: 'scale(1) translateY(-20px)',
@@ -95,10 +95,14 @@ function PictureAndTitle(props) {
 											transform: 'rotate(180deg) scale(1.3) translateY(20px)',
 										},
 									},
-									height: '50px',
-									width: '50px',
+									animationDuration: '2.5s',
+									animationFillMode: 'forwards',
+									animationIterationCount: '1',
+									animationName: `${hovering ? clicked ? 'moveUp' : 'moveDown' : ''}`,
 									color:'primary.main',
+									height: '50px',
 									transform: `${clicked ? 'rotate(180deg)' : ''}`,
+									width: '50px',
 								}}
 							/>
 						</Grid>

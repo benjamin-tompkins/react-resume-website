@@ -1,3 +1,4 @@
+import React from 'react';
 import EducationSection from "./EducationSection.react";
 import ExperienceSection from "./ExperienceSection.react";
 import Header from "./Header.react";

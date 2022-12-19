@@ -1,5 +1,5 @@
 import { Card, Grid, Typography } from '@mui/material';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../AppContext';
 
 function PersonalInfo() {
@@ -9,16 +9,16 @@ function PersonalInfo() {
 		<Card raised sx={{borderRadius: borderRadius}}>
 			<Grid
 				container
+				alignItems='center'
 				direction='column'
 				justifyContent='center'
-				alignItems='center'
 			>
 				<Grid item xs={12}>
 					<Grid
 						container
+						alignItems='center'
 						direction='row'
 						justifyContent='center'
-						alignItems='center'
 						padding={1}
 					>
 						<Grid item xs={12}>

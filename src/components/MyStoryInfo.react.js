@@ -1,15 +1,22 @@
 import { Box, Grid, Typography } from "@mui/material"
+import React from 'react'
+import PropTypes from 'prop-types';
+
+MyStoryInfo.propTypes = {
+	paragraphs: PropTypes.func.isRequired,
+  subtitle: PropTypes.object.isRequired
+}
 
 function MyStoryInfo(props) {
-	const { subtitle, paragraphs} = props
+	const { paragraphs, subtitle } = props;
 	return (
 		<Grid
 			container
+			alignItems='left'
 			direction='column'
 			justifyContent='top'
-			alignItems='left'
 		>
-			<Box sx={{overflow:'auto'}}>
+			<Box sx={{overflow: 'auto', scrollbar: 'white'}}>
 			<Grid item paddingBottom={'20px'}>
 				<Typography align='left' variant='h3'>
 					{subtitle}
@@ -17,14 +24,14 @@ function MyStoryInfo(props) {
 			</Grid>
 			{paragraphs.map(paragraph => (
 				<Grid item key={paragraph.substring(10)}>
-					<Typography variant='body1' paddingBottom={'20px'}>
+					<Typography paddingBottom={'20px'} variant='body1'>
 						{paragraph}
 					</Typography>
 				</Grid>
 			))}
 			</Box>
 		</Grid>
-	)
+	);
 }
 
 export default MyStoryInfo;
