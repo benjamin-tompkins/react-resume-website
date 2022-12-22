@@ -3,8 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 MyStoryInfo.propTypes = {
-	paragraphs: PropTypes.func.isRequired,
-  subtitle: PropTypes.object.isRequired
+	paragraphs: PropTypes.array.isRequired,
+  subtitle: PropTypes.string.isRequired
 }
 
 function MyStoryInfo(props) {

@@ -47,9 +47,6 @@ function InfoAndButtons(props) {
 			<Grid item
 				marginTop={appBarHeight}
 				sx={{
-					'&:hover': {
-						backgroundColor: 'background.paper',
-					},
 					backgroundColor: 'background.paper',
 					display: 'flex',
 					height: `calc(75vh - 30px)`,

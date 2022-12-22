@@ -1,5 +1,4 @@
-import moment from 'moment';
-import { Avatar, Button, Card, Grid, Link, ListItemText, Tooltip, Typography } from '@mui/material';
+import { Avatar, Button, Card, Grid, Link, ListItemText, Typography } from '@mui/material';
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { AppContext } from '../AppContext';
@@ -10,11 +9,11 @@ const IMAGE_WIDTH = 50
 
 ExperienceCard.propTypes = {
   description: PropTypes.string.isRequired,
-	endDate: PropTypes.string.isRequired,
+	endDate: PropTypes.string,
 	link: PropTypes.string,
 	logo: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
-	startDate: PropTypes.string.isRequired,
+	startDate: PropTypes.string,
 }
 
 function ExperienceCard(props) {
@@ -52,11 +51,9 @@ function ExperienceCard(props) {
 								</Grid> 
 								{	!mobile && hasDates ?
 									<Grid item xs={2}>
-										<Tooltip title={moment.duration(moment(endDate).diff(moment(startDate))).humanize()} >
-											<Typography align='left' sx={{display: 'inline'}} variant='body2'>
-												{startDate + ' - ' + endDate}
-											</Typography>
-										</Tooltip>
+										<Typography align='left' sx={{display: 'inline'}} variant='body2'>
+											{startDate + ' - ' + endDate}
+										</Typography>
 									</Grid>
 									: null
 								}
@@ -72,7 +69,7 @@ function ExperienceCard(props) {
 				{link ? 
 					<Grid item padding={1}>
 						<Link href={link} target='_blank' underline='none'>
-							<Button  variant="outlined">Open in GitHub</Button>
+							<Button sx={{position: 'inherit'}} variant="outlined">Open in GitHub</Button>
 						</Link>
 					</Grid>
 					: null
